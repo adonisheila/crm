@@ -1,0 +1,106 @@
+<app-bread-crumb
+  [items]="[{text: 'INFORMES DE GASTOS E INGRESOS'}]"
+></app-bread-crumb>
+
+<app-page-header
+  page-title="INFORMES DE GASTOS E INGRESOS"
+  [show-button]="false"
+></app-page-header>
+
+
+<div class="card">
+  <div class="card-header">
+    Seleccione un mes
+  </div>
+
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-7">
+        <label for="month">Mes</label>
+        <select #month name="month" id="month" class="form-control">
+          <option value="">Seleccione un mes</option>
+          <option value="1">enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembro</option>
+          <option value="12">Diciembre</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-5">
+        <label for="year">Año</label>
+        <select #year name="year" id="year" class="form-control">
+          <option value="">Seleccione un año</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md text-right">
+        <button type="button" (click)="generateReports()" class="btn btn-primary">
+          Generar informes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-deck mt-5 mb-5">
+  <div class="card text-center text-white bg-success">
+    <div class="card-header">
+      TOTAL DE INGRESOS
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">
+        {{revenueTotal}}
+      </h3>
+    </div>
+  </div>
+
+  <div class="card text-center text-white bg-danger">
+    <div class="card-header">
+      TOTAL DE GASTOS
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">
+        {{expenseTotal}}
+      </h3>
+    </div>
+  </div>
+
+  <div class="card text-center text-white bg-info">
+    <div class="card-header">
+      SALDO
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">
+        {{balance}}
+      </h3>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mt-5 mb-4">
+  <div class="col-md-6">
+    <p-chart type="bar" [data]="revenueChartData" [options]="chartOptions"></p-chart>
+  </div>
+
+  <div class="col-md-6">
+    <p-chart type="bar" [data]="expenseChartData" [options]="chartOptions"></p-chart>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<app-bread-crumb
+  [items]="[{ text: 'Categorias', link: '/categories' }, { text: pageTitle }]"
+></app-bread-crumb>
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="<< Regresar"
+  button-link="/categories"
+  button-class="btn-light"
+></app-page-header>
+
+<form [formGroup]="resourceForm" (submit)="submitForm()">
+  <div class="card-header">Informes sobre los clientes</div>
+
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="name">Producto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+        />
+        <app-form-field-error
+          [form-control]="resourceForm.get('name')"
+        ></app-form-field-error>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="apellido">nombre y apellido del cliente</label>
+        <input
+          type="text"
+          class="form-control"
+          id="apellido"
+          formControlName="apellido"
+        />
+        <app-form-field-error
+          [form-control]="resourceForm.get('name')"
+        ></app-form-field-error>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="numero">numero</label>
+        <input
+          type="number"
+          class="form-control"
+          id="numero"
+          formControlName="numero"
+        />
+        <app-form-field-error
+          [form-control]="resourceForm.get('name')"
+        ></app-form-field-error>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="numero">ciudad</label>
+        <input
+          type="text"
+          class="form-control"
+          id="ciudad"
+          formControlName="ciudad"
+        />
+        <app-form-field-error
+          [form-control]="resourceForm.get('name')"
+        ></app-form-field-error>
+      </div>
+      <div class="form-group col-md-8">
+        <label for="description">Descripcion</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          formControlName="description"
+        />
+      </div>
+    </div>
+  </div>
+
+  <app-server-error-messages
+    [server-error-messages]="serverErrorMessages"
+  ></app-server-error-messages>
+
+  <button
+    class="btn btn-primary btn-lg float-right mt-3"
+    type="submit"
+    [disabled]="submittingForm || resourceForm.invalid"
+  >
+    GUARDAR
+  </button>
+</form>
